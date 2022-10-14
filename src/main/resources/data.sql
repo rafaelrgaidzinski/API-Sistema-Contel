@@ -1,0 +1,1 @@
+insert into usuario (login_usuario, email_usuario, senha_usuario, telefone_usuario) values ('rafaelronsoni','rafaelgaidzinski@yahoo.com', 'rafa4596', 0);
