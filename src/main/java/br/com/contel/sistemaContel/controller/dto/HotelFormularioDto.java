@@ -5,7 +5,7 @@ import br.com.contel.sistemaContel.model.Hotel;
 
 public class HotelFormularioDto {
 	
-	private int cnpjHotel;
+	private Long cnpjHotel;
 	private String nomeHotel;
 	private String emailHotel;
 	private int telefoneHotel;
@@ -23,7 +23,7 @@ public class HotelFormularioDto {
 	}
 
 	
-	public int getCnpjHotel() {
+	public Long getCnpjHotel() {
 		return cnpjHotel;
 	}
 	

@@ -22,11 +22,11 @@ public class AtualizarUsuarioForm {
 		
 		Usuario usuario = usuarioRepository.getReferenceById(loginUsuario);
 		
-		usuario.setSenhaUsuario(this.senhaUsuario);
-		usuario.setEmailUsuario(this.emailUsuario);
-		usuario.setTelefoneUsuario(this.telefoneUsuario);
-		usuario.setNomeUsuario(this.nomeUsuario);
-		usuario.setCargoUsuario(this.cargoUsuario);
+		usuario.setSenhaUsuario(senhaUsuario);
+		usuario.setEmailUsuario(emailUsuario);
+		usuario.setTelefoneUsuario(telefoneUsuario);
+		usuario.setNomeUsuario(nomeUsuario);
+		usuario.setCargoUsuario(cargoUsuario);
 		
 		return usuario;
 		

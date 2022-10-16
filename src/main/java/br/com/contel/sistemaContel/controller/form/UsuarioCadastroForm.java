@@ -24,6 +24,7 @@ public class UsuarioCadastroForm {
 		return new Usuario(loginUsuario, senhaUsuario, emailUsuario, telefoneUsuario, nomeUsuario, cargoUsuario);
 	}
 
+	
 	public String getLoginUsuario() {
 		return loginUsuario;
 	}

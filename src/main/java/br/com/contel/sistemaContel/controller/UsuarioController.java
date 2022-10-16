@@ -73,7 +73,7 @@ public class UsuarioController {
 	@CrossOrigin
 	@Transactional
 	@DeleteMapping("/{loginUsuario}")
-	public ResponseEntity<UsuarioDto> deletarUsuario(@PathVariable String loginUsuario) {
+	public ResponseEntity<?> deletarUsuario(@PathVariable String loginUsuario) {
 		
 		Optional<Usuario> usuarioOptional = usuarioRepository.findById(loginUsuario);
 		

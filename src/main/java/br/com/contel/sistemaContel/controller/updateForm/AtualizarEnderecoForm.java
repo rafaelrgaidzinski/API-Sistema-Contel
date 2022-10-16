@@ -1,15 +1,10 @@
-package br.com.contel.sistemaContel.model;
+package br.com.contel.sistemaContel.controller.updateForm;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import br.com.contel.sistemaContel.model.Endereco;
+import br.com.contel.sistemaContel.repository.EnderecoRepository;
 
-@Entity
-public class Endereco {
+public class AtualizarEnderecoForm {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigoEndereco;
 	private int cepEndereco;
 	private String ruaEndereco;
 	private String numeroEndereco;
@@ -17,27 +12,22 @@ public class Endereco {
 	private String cidadeEndereco;
 	private String estadoEndereco;
 	
-	public Endereco() {
+	
+	public Endereco atualizar(int codigoEndereco, EnderecoRepository enderecoRepository) {
+		
+		Endereco endereco = enderecoRepository.getReferenceById(codigoEndereco);
+		
+		endereco.setCepEndereco(cepEndereco);
+		endereco.setRuaEndereco(ruaEndereco);
+		endereco.setNumeroEndereco(numeroEndereco);
+		endereco.setBairroEndereco(bairroEndereco);
+		endereco.setCidadeEndereco(cidadeEndereco);
+		endereco.setEstadoEndereco(estadoEndereco);
+		
+		return endereco;
 		
 	}
-
-	public Endereco(int cepEndereco, String ruaEndereco, String numeroEndereco,
-			String bairroEndereco, String cidadeEndereco, String estadoEndereco) {
-		this.cepEndereco = cepEndereco;
-		this.ruaEndereco = ruaEndereco;
-		this.numeroEndereco = numeroEndereco;
-		this.bairroEndereco = bairroEndereco;
-		this.cidadeEndereco = cidadeEndereco;
-		this.estadoEndereco = estadoEndereco;
-	}
-
-	public int getCodigoEndereco() {
-		return codigoEndereco;
-	}
 	
-	public void setCodigoEndereco(int codigoEndereco) {
-		this.codigoEndereco = codigoEndereco;
-	}
 	
 	public int getCepEndereco() {
 		return cepEndereco;
@@ -82,9 +72,10 @@ public class Endereco {
 	public String getEstadoEndereco() {
 		return estadoEndereco;
 	}
-
+	
 	public void setEstadoEndereco(String estadoEndereco) {
 		this.estadoEndereco = estadoEndereco;
 	}
+	
 
 }

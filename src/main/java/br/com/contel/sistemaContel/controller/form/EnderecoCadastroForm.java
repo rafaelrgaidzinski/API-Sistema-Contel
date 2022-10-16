@@ -1,15 +1,9 @@
-package br.com.contel.sistemaContel.model;
+package br.com.contel.sistemaContel.controller.form;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import br.com.contel.sistemaContel.model.Endereco;
 
-@Entity
-public class Endereco {
+public class EnderecoCadastroForm {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigoEndereco;
 	private int cepEndereco;
 	private String ruaEndereco;
 	private String numeroEndereco;
@@ -17,27 +11,11 @@ public class Endereco {
 	private String cidadeEndereco;
 	private String estadoEndereco;
 	
-	public Endereco() {
+	public Endereco converter() {
 		
-	}
-
-	public Endereco(int cepEndereco, String ruaEndereco, String numeroEndereco,
-			String bairroEndereco, String cidadeEndereco, String estadoEndereco) {
-		this.cepEndereco = cepEndereco;
-		this.ruaEndereco = ruaEndereco;
-		this.numeroEndereco = numeroEndereco;
-		this.bairroEndereco = bairroEndereco;
-		this.cidadeEndereco = cidadeEndereco;
-		this.estadoEndereco = estadoEndereco;
-	}
-
-	public int getCodigoEndereco() {
-		return codigoEndereco;
+		return new Endereco(cepEndereco, ruaEndereco, numeroEndereco, bairroEndereco, cidadeEndereco, estadoEndereco);
 	}
 	
-	public void setCodigoEndereco(int codigoEndereco) {
-		this.codigoEndereco = codigoEndereco;
-	}
 	
 	public int getCepEndereco() {
 		return cepEndereco;
@@ -82,7 +60,7 @@ public class Endereco {
 	public String getEstadoEndereco() {
 		return estadoEndereco;
 	}
-
+	
 	public void setEstadoEndereco(String estadoEndereco) {
 		this.estadoEndereco = estadoEndereco;
 	}
