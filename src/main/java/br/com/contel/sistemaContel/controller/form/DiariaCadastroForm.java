@@ -1,50 +1,36 @@
-package br.com.contel.sistemaContel.model;
+package br.com.contel.sistemaContel.controller.form;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
-@Entity
-public class Diaria {
+import br.com.contel.sistemaContel.model.Diaria;
+
+public class DiariaCadastroForm {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigoDiaria;
+	@NotEmpty
 	private String categoriaDiaria;
+	@NotNull @Positive
 	private double valorDiariaSegunda;
+	@NotNull @Positive
 	private double valorDiariaTerca;
+	@NotNull @Positive
 	private double valorDiariaQuarta;
+	@NotNull @Positive
 	private double valorDiariaQuinta;
+	@NotNull @Positive
 	private double valorDiariaSexta;
+	@NotNull @Positive
 	private double valorDiariaSabado;
+	@NotNull @Positive
 	private double valorDiariaDomingo;
 	
 	
-	public Diaria() {
+	public Diaria converter() {
 		
+		return new Diaria(categoriaDiaria, valorDiariaSegunda, valorDiariaTerca, valorDiariaQuarta, valorDiariaQuinta, valorDiariaSexta, valorDiariaSabado, valorDiariaDomingo);
 	}
 	
-	public Diaria(String categoriaDiaria, double valorDiariaSegunda, double valorDiariaTerca,
-			double valorDiariaQuarta, double valorDiariaQuinta, double valorDiariaSexta, double valorDiariaSabado,
-			double valorDiariaDomingo) {
-		this.categoriaDiaria = categoriaDiaria;
-		this.valorDiariaSegunda = valorDiariaSegunda;
-		this.valorDiariaTerca = valorDiariaTerca;
-		this.valorDiariaQuarta = valorDiariaQuarta;
-		this.valorDiariaQuinta = valorDiariaQuinta;
-		this.valorDiariaSexta = valorDiariaSexta;
-		this.valorDiariaSabado = valorDiariaSabado;
-		this.valorDiariaDomingo = valorDiariaDomingo;
-	}
-	
-	
-	public int getCodigoDiaria() {
-		return codigoDiaria;
-	}
-
-	public void setCodigoDiaria(int codigoDiaria) {
-		this.codigoDiaria = codigoDiaria;
-	}
 	
 	public String getCategoriaDiaria() {
 		return categoriaDiaria;
@@ -110,5 +96,5 @@ public class Diaria {
 		this.valorDiariaDomingo = valorDiariaDomingo;
 	}
 	
-	
+
 }
