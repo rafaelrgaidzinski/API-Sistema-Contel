@@ -23,6 +23,7 @@ public class HotelCadastroForm {
 	
 	
 	public Hotel converter(EnderecoRepository enderecoRepository) {
+		
 		Endereco endereco = enderecoRepository.getReferenceById(codigoEndereco);
 		
 		return new Hotel(cnpjHotel, nomeHotel, emailHotel, telefoneHotel, siteHotel, endereco);

@@ -12,3 +12,5 @@ insert into diaria values (default, 'Quartos Deluxe', 250.00 , 300.00 , 200.00 ,
 insert into diaria values (default, 'Quartos Premium', 275.00 , 325.00 , 225.00 , 275.00 , 325.00 , 225.00, 325.00);
 
 insert into quarto values ('A-101', 0, 2, 1);
+
+insert into hospede values (07073219998, '1991-10-30', 'rafaelgaidzinski@hotmail.com', 'Rafael Ronsoni Gaidzinski', 48991723912, 1);

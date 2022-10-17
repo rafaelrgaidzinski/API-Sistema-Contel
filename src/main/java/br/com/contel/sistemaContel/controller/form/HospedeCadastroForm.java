@@ -1,39 +1,39 @@
-package br.com.contel.sistemaContel.model;
+package br.com.contel.sistemaContel.controller.form;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
-@Entity
-public class Hospede {
+import br.com.contel.sistemaContel.model.Endereco;
+import br.com.contel.sistemaContel.model.Hospede;
+import br.com.contel.sistemaContel.repository.EnderecoRepository;
+
+public class HospedeCadastroForm {
 	
-	@Id
+	@NotNull
 	private Long cpfHospede;
+	@NotEmpty
 	private String nomeHospede;
+	@NotNull @Past
 	private LocalDate dataNascimentoHospede;
+	@Email
 	private String emailHospede;
 	private Long telefoneHospede;
 	
-	@OneToOne
-	private Endereco endereco;
+	private int codigoEndereco;
+
 	
-	public Hospede() {
+	public Hospede converter(EnderecoRepository endeerecoRepository) {
 		
+		Endereco endereco = endeerecoRepository.getReferenceById(codigoEndereco);
+		
+		return new Hospede(cpfHospede, nomeHospede, dataNascimentoHospede, emailHospede, telefoneHospede, endereco);
 	}
-
-	public Hospede(Long cpfHospede, String nomeHospede, LocalDate dataNascimentoHospede, String emailHospede,
-			Long telefoneHospede, Endereco endereco) {
-		this.cpfHospede = cpfHospede;
-		this.nomeHospede = nomeHospede;
-		this.dataNascimentoHospede = dataNascimentoHospede;
-		this.emailHospede = emailHospede;
-		this.telefoneHospede = telefoneHospede;
-		this.endereco = endereco;
-	}
-
-
+	
+	
 	public Long getCpfHospede() {
 		return cpfHospede;
 	}
@@ -74,13 +74,13 @@ public class Hospede {
 		this.telefoneHospede = telefoneHospede;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public int getCodigoEndereco() {
+		return codigoEndereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setCodigoEndereco(int codigoEndereco) {
+		this.codigoEndereco = codigoEndereco;
 	}
-
 	
+
 }
