@@ -1,41 +1,32 @@
 package br.com.contel.sistemaContel.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Quarto {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigoQuarto;
+	@Id
 	private String numeroQuarto;
 	private int quantidadeCamaCasal;
 	private int quantidadeCamaSolteiro;
 	
-	// foreign key codigoDiaria
+	@OneToOne
+	private Diaria diaria;
 	
 	
 	public Quarto() {
 		
 	}
 
-	public Quarto(int codigoQuarto, String numeroQuarto, int quantidadeCamaCasal, int quantidadeCamaSolteiro) {
-		this.codigoQuarto = codigoQuarto;
+	public Quarto(String numeroQuarto, int quantidadeCamaCasal, int quantidadeCamaSolteiro, Diaria diaria) {
 		this.numeroQuarto = numeroQuarto;
 		this.quantidadeCamaCasal = quantidadeCamaCasal;
 		this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
-	}
-	
-
-	public int getCodigoQuarto() {
-		return codigoQuarto;
+		this.diaria = diaria;
 	}
 
-	public void setCodigoQuarto(int codigoQuarto) {
-		this.codigoQuarto = codigoQuarto;
-	}
 
 	public String getNumeroQuarto() {
 		return numeroQuarto;
@@ -60,6 +51,17 @@ public class Quarto {
 	public void setQuantidadeCamaSolteiro(int quantidadeCamaSolteiro) {
 		this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
 	}
+
+	public Diaria getDiaria() {
+		return diaria;
+	}
+
+	public void setDiaria(Diaria diaria) {
+		this.diaria = diaria;
+	}
+	
+
+
 	
 	
 }

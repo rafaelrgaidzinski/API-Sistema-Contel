@@ -38,7 +38,6 @@ public class DiariaController {
 	public List<DiariaFormularioDto> buscarDiarias() {
 		
 		List<Diaria> diarias = diariaRepository.findAll();
-		
 		return DiariaFormularioDto.converter(diarias);
 	}
 	
