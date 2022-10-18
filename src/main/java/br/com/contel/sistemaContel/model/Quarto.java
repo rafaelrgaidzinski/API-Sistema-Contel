@@ -11,6 +11,7 @@ public class Quarto {
 	private String numeroQuarto;
 	private int quantidadeCamaCasal;
 	private int quantidadeCamaSolteiro;
+	private boolean ocupado;
 	
 	@OneToOne
 	private Diaria diaria;
@@ -20,10 +21,12 @@ public class Quarto {
 		
 	}
 
-	public Quarto(String numeroQuarto, int quantidadeCamaCasal, int quantidadeCamaSolteiro, Diaria diaria) {
+	public Quarto(String numeroQuarto, int quantidadeCamaCasal, int quantidadeCamaSolteiro,
+			Diaria diaria) {
 		this.numeroQuarto = numeroQuarto;
 		this.quantidadeCamaCasal = quantidadeCamaCasal;
 		this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
+		this.ocupado = false;
 		this.diaria = diaria;
 	}
 
@@ -52,6 +55,14 @@ public class Quarto {
 		this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
 	}
 
+	public boolean getOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
 	public Diaria getDiaria() {
 		return diaria;
 	}
@@ -59,9 +70,6 @@ public class Quarto {
 	public void setDiaria(Diaria diaria) {
 		this.diaria = diaria;
 	}
-	
-
-
 	
 	
 }

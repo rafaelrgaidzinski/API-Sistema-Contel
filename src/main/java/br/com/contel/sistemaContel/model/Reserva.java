@@ -6,124 +6,158 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity
 public class Reserva {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigoReserva;
+	private Long codigoReserva;
 	private String situacaoReserva;
 	private int quantidadeHospedes;
-	private LocalDate dataChegadaHospede;
-	private LocalDate dataSaidaHospede;
-	private String observacaoReserva;
 	private LocalDate dataCheckInReserva;
 	private LocalDate dataCheckOutReserva;
+	private String observacaoReserva;
 	private LocalDate dataCadastroReserva;
 	private LocalDate dataCancelamentoReserva;
 	
-	//foreign key cpfHospede
-	//foreign key codigoQuarto
+	@OneToOne
+	private Quarto quarto;
+	
+	@OneToOne
+	private Hospede hospede;
+	
 	
 	public Reserva() {
 		
 	}
 
-	public Reserva(int codigoReserva, String situacaoReserva, int quantidadeHospedes, LocalDate dataChegadaHospede,
-			LocalDate dataSaidaHospede, String observacaoReserva, LocalDate dataCheckInReserva,
-			LocalDate dataCheckOutReserva, LocalDate dataCadastroReserva, LocalDate dataCancelamentoReserva) {
-		this.codigoReserva = codigoReserva;
+	public Reserva(String situacaoReserva, int quantidadeHospedes, LocalDate dataCheckInReserva,
+			LocalDate dataCheckOutReserva, String observacaoReserva, LocalDate dataCadastroReserva,
+			LocalDate dataCancelamentoReserva, Quarto quarto, Hospede hospede) {
 		this.situacaoReserva = situacaoReserva;
 		this.quantidadeHospedes = quantidadeHospedes;
-		this.dataChegadaHospede = dataChegadaHospede;
-		this.dataSaidaHospede = dataSaidaHospede;
-		this.observacaoReserva = observacaoReserva;
 		this.dataCheckInReserva = dataCheckInReserva;
 		this.dataCheckOutReserva = dataCheckOutReserva;
+		this.observacaoReserva = observacaoReserva;
 		this.dataCadastroReserva = dataCadastroReserva;
 		this.dataCancelamentoReserva = dataCancelamentoReserva;
+		this.quarto = quarto;
+		this.hospede = hospede;
 	}
 	
+	public Reserva(String situacaoReserva, int quantidadeHospedes, LocalDate dataCheckInReserva,
+			LocalDate dataCheckOutReserva, String observacaoReserva, LocalDate dataCadastroReserva,
+			Quarto quarto, Hospede hospede) {
+		this.situacaoReserva = situacaoReserva;
+		this.quantidadeHospedes = quantidadeHospedes;
+		this.dataCheckInReserva = dataCheckInReserva;
+		this.dataCheckOutReserva = dataCheckOutReserva;
+		this.observacaoReserva = observacaoReserva;
+		this.dataCadastroReserva = dataCadastroReserva;
+		this.quarto = quarto;
+		this.hospede = hospede;
+	}
 
-	public int getCodigoReserva() {
+
+	public Long getCodigoReserva() {
 		return codigoReserva;
 	}
 
-	public void setCodigoReserva(int codigoReserva) {
+
+	public void setCodigoReserva(Long codigoReserva) {
 		this.codigoReserva = codigoReserva;
 	}
+
 
 	public String getSituacaoReserva() {
 		return situacaoReserva;
 	}
 
+
 	public void setSituacaoReserva(String situacaoReserva) {
 		this.situacaoReserva = situacaoReserva;
 	}
+
 
 	public int getQuantidadeHospedes() {
 		return quantidadeHospedes;
 	}
 
+
 	public void setQuantidadeHospedes(int quantidadeHospedes) {
 		this.quantidadeHospedes = quantidadeHospedes;
 	}
 
-	public LocalDate getDataChegadaHospede() {
-		return dataChegadaHospede;
-	}
-
-	public void setDataChegadaHospede(LocalDate dataChegadaHospede) {
-		this.dataChegadaHospede = dataChegadaHospede;
-	}
-
-	public LocalDate getDataSaidaHospede() {
-		return dataSaidaHospede;
-	}
-
-	public void setDataSaidaHospede(LocalDate dataSaidaHospede) {
-		this.dataSaidaHospede = dataSaidaHospede;
-	}
-
-	public String getObservacaoReserva() {
-		return observacaoReserva;
-	}
-
-	public void setObservacaoReserva(String observacaoReserva) {
-		this.observacaoReserva = observacaoReserva;
-	}
 
 	public LocalDate getDataCheckInReserva() {
 		return dataCheckInReserva;
 	}
 
+
 	public void setDataCheckInReserva(LocalDate dataCheckInReserva) {
 		this.dataCheckInReserva = dataCheckInReserva;
 	}
+
 
 	public LocalDate getDataCheckOutReserva() {
 		return dataCheckOutReserva;
 	}
 
+
 	public void setDataCheckOutReserva(LocalDate dataCheckOutReserva) {
 		this.dataCheckOutReserva = dataCheckOutReserva;
 	}
+
+
+	public String getObservacaoReserva() {
+		return observacaoReserva;
+	}
+
+
+	public void setObservacaoReserva(String observacaoReserva) {
+		this.observacaoReserva = observacaoReserva;
+	}
+
 
 	public LocalDate getDataCadastroReserva() {
 		return dataCadastroReserva;
 	}
 
+
 	public void setDataCadastroReserva(LocalDate dataCadastroReserva) {
 		this.dataCadastroReserva = dataCadastroReserva;
 	}
+
 
 	public LocalDate getDataCancelamentoReserva() {
 		return dataCancelamentoReserva;
 	}
 
+
 	public void setDataCancelamentoReserva(LocalDate dataCancelamentoReserva) {
 		this.dataCancelamentoReserva = dataCancelamentoReserva;
+	}
+
+
+	public Quarto getQuarto() {
+		return quarto;
+	}
+
+
+	public void setQuarto(Quarto quarto) {
+		this.quarto = quarto;
+	}
+
+
+	public Hospede getHospede() {
+		return hospede;
+	}
+
+
+	public void setHospede(Hospede hospede) {
+		this.hospede = hospede;
 	}
 
 

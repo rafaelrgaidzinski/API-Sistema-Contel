@@ -11,6 +11,7 @@ public class QuartoFormularioDto {
 	private String numeroQuarto;
 	private int quantidadeCamaCasal;
 	private int quantidadeCamaSolteiro;
+	private boolean ocupado;
 	private Diaria diaria;	
 	
 	
@@ -18,6 +19,7 @@ public class QuartoFormularioDto {
 		this.numeroQuarto = quarto.getNumeroQuarto();
 		this.quantidadeCamaCasal = quarto.getQuantidadeCamaCasal();
 		this.quantidadeCamaSolteiro = quarto.getQuantidadeCamaSolteiro();
+		this.ocupado = quarto.getOcupado();
 		this.diaria = quarto.getDiaria();
 	}
 	
@@ -40,6 +42,10 @@ public class QuartoFormularioDto {
 		return quantidadeCamaSolteiro;
 	}
 	
+	public boolean getOcupado() {
+		return ocupado;
+	}
+
 	public Diaria getDiaria() {
 		return diaria;
 	}

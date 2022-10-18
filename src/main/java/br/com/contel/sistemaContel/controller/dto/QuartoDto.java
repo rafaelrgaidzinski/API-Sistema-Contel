@@ -10,7 +10,7 @@ public class QuartoDto {
 	public QuartoDto(Quarto quarto) {
 		this.numeroQuarto = quarto.getNumeroQuarto();
 	}
-
+	
 
 	public String getNumeroQuarto() {
 		return numeroQuarto;

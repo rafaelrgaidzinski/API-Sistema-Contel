@@ -11,6 +11,9 @@ insert into diaria values (default, 'Quartos de Casal', 225.00 , 275.00 , 175.00
 insert into diaria values (default, 'Quartos Deluxe', 250.00 , 300.00 , 200.00 , 250.00 , 300.00 , 200.00, 300.00);
 insert into diaria values (default, 'Quartos Premium', 275.00 , 325.00 , 225.00 , 275.00 , 325.00 , 225.00, 325.00);
 
-insert into quarto values ('A-101', 0, 2, 1);
+insert into quarto values ('A-101', 0, 2, false, 1);
 
 insert into hospede values (07073219998, '1991-10-30', 'rafaelgaidzinski@hotmail.com', 'Rafael Ronsoni Gaidzinski', 48991723912, 1);
+
+insert into reserva (situacao_reserva, quantidade_hospedes, data_check_in_reserva, data_check_out_reserva, observacao_reserva, data_cadastro_reserva, quarto_numero_quarto, hospede_cpf_hospede)
+		values ('Reservado', 2, '2022-10-24', '2022-10-25', 'Chega pela manhã', '2022-10-17', 'A-101', 7073219998);
