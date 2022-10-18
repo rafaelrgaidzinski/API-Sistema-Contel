@@ -17,3 +17,6 @@ insert into hospede values (07073219998, '1991-10-30', 'rafaelgaidzinski@hotmail
 
 insert into reserva (situacao_reserva, quantidade_hospedes, data_check_in_reserva, data_check_out_reserva, observacao_reserva, data_cadastro_reserva, quarto_numero_quarto, hospede_cpf_hospede)
 		values ('Reservado', 2, '2022-10-24', '2022-10-25', 'Chega pela manhã', '2022-10-17', 'A-101', 7073219998);
+		
+insert into receita values (default, 'Hospedagem', null, 'Quarto A-101', 200.50, '2022-10-19', 1);
+insert into receita values (default, 'Restaurante', '2022-10-18', 'Refrigerante', 5.50, '2022-10-18', null);

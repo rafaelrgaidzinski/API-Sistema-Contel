@@ -94,7 +94,7 @@ public class ReservaController {
 	@CrossOrigin
 	@Transactional
 	@PostMapping
-	public ResponseEntity<ReservaDto> cadastroReserva(@RequestBody @Valid ReservaCadastroForm reservaCadastroForm, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<ReservaDto> cadastrarReserva(@RequestBody @Valid ReservaCadastroForm reservaCadastroForm, UriComponentsBuilder uriBuilder) {
 		
 		Reserva reserva = reservaCadastroForm.converter(hospedeRepository, quartoRepository);
 		
