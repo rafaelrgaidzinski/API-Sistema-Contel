@@ -66,6 +66,21 @@ public class ReceitaController {
 		return ReceitaFormularioDto.converter(receitas);
 	}
 	
+	@CrossOrigin
+	@GetMapping("/totalDia")
+	public double buscaReceitaDia(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
+		double receitaDia=0;
+		Receita r;
+			List<Receita> receitas = receitaRepository.findByDataRecebimento(data);
+			
+			for(int i = 0; i < receitas.size(); i++) {
+				r=receitas.get(i);
+				
+				receitaDia+=r.getValorReceita();;
+			}
+		return receitaDia;
+	}
+	
 	
 	@CrossOrigin
 	@Transactional

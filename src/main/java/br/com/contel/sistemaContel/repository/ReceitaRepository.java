@@ -10,5 +10,7 @@ import br.com.contel.sistemaContel.model.Receita;
 public interface ReceitaRepository extends JpaRepository<Receita, Long> {
 	
 	public List<Receita> findByVencimentoReceitaBetween (LocalDate dataInicial, LocalDate dataFinal);
+	
+	public List<Receita> findByDataRecebimento (LocalDate data);
 
 }

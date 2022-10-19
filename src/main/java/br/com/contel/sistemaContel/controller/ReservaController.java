@@ -24,7 +24,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.contel.sistemaContel.controller.dto.ReservaDto;
 import br.com.contel.sistemaContel.controller.dto.ReservaFormularioDto;
-import br.com.contel.sistemaContel.controller.dto.ReservaIndicadoresDto;
 import br.com.contel.sistemaContel.controller.form.ReservaCadastroForm;
 import br.com.contel.sistemaContel.controller.updateForm.AtualizarCancelarReservaForm;
 import br.com.contel.sistemaContel.controller.updateForm.AtualizarCheckInReservaForm;
@@ -75,21 +74,56 @@ public class ReservaController {
 	
 	@CrossOrigin
 	@GetMapping("/painel-de-controle")
-	public List<ReservaIndicadoresDto> buscarReservasPainelDeControle(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCadastro, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCancelamento) {
+	public int buscarIndicadoresPainelDeControle(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCadastro,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCancelamento,	
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate qntHospedesDia) {
+		
 		
 		if (dataCadastro != null) {
 			List<Reserva> reservas = reservaRepository.findByDataCadastroReserva(dataCadastro);
-			return ReservaIndicadoresDto.converter(reservas);
+			return reservas.size();
 			
 		} else if (dataCancelamento != null) {
 			List<Reserva> reservas = reservaRepository.findByDataCancelamentoReserva(dataCancelamento);
-			return ReservaIndicadoresDto.converter(reservas);
+			return reservas.size();
+		}
+		else if(qntHospedesDia != null) {
+			int qntHospede = reservaRepository.findQntHospedes(qntHospedesDia); 
+			return qntHospede; 
 		}
 		
-		List<Reserva> reservas = reservaRepository.findAll();
-		return ReservaIndicadoresDto.converter(reservas);
+		return 0;
+	}
+	@CrossOrigin
+	@GetMapping("/diariaMedia/{diaSemana}/{dataAtual}") 
+	public double diariaMedia(@PathVariable int diaSemana, @PathVariable String dataAtual) {
+	
+		double diariaMedia = reservaRepository.findDiariaMedia(diaSemana, dataAtual); 
+		return diariaMedia; 
 	}
 	
+	@CrossOrigin
+	@GetMapping("/painel-de-controle/check")
+	public List<ReservaFormularioDto> buscarReservasPainelDeControl(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataChegada, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataSaida){
+		LocalDate dataFinal;
+		
+		if (dataChegada != null) {
+			
+			dataFinal = dataChegada.plusDays(5);
+			List<Reserva> reservas = reservaRepository.findByDataCheckInReservaBetween(dataChegada,dataFinal);
+			return ReservaFormularioDto.converter(reservas);
+			
+		} else if (dataSaida != null) {
+			dataFinal = dataSaida.plusDays(5);
+			List<Reserva> reservas = reservaRepository.findByDataCheckOutReservaBetween(dataSaida,dataFinal);
+			return ReservaFormularioDto.converter(reservas);
+		}
+		
+		else {
+			List<Reserva> reservas = reservaRepository.findAll();
+			return ReservaFormularioDto.converter(reservas);
+		}
+	}
 	
 	@CrossOrigin
 	@Transactional
