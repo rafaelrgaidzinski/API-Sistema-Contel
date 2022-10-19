@@ -95,7 +95,7 @@ public class ReceitaController {
 	@CrossOrigin
 	@Transactional
 	@PutMapping("/recebimento/{codigoReceita}")
-	public ResponseEntity<ReceitaDto> atualizarReceita(@PathVariable Long codigoReceita, @RequestBody @Valid AtualizarDataRecebimentoForm atualizarDataRecebimentoForm) {
+	public ResponseEntity<ReceitaDto> atualizarRecebimentoReceita(@PathVariable Long codigoReceita, @RequestBody @Valid AtualizarDataRecebimentoForm atualizarDataRecebimentoForm) {
 		
 		Receita receita = atualizarDataRecebimentoForm.atualizar(codigoReceita, receitaRepository);
 		

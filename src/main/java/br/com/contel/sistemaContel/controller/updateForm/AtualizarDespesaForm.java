@@ -1,82 +1,78 @@
-package br.com.contel.sistemaContel.model;
+package br.com.contel.sistemaContel.controller.updateForm;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
-@Entity
-public class Despesa {
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigoDespesa;
+import br.com.contel.sistemaContel.model.Despesa;
+import br.com.contel.sistemaContel.repository.DespesaRepository;
+
+public class AtualizarDespesaForm {
+
+	@NotNull @PositiveOrZero
 	private double valorDespesa;
 	private String descricaoDespesa;
+	@NotEmpty
 	private String categoriaDespesa;
+	@NotNull @FutureOrPresent
 	private LocalDate vencimentoDespesa;
+	@FutureOrPresent
 	private LocalDate dataPagamento;
 	
 	
-	public Despesa() {
+	public Despesa atualizar(Long codigoDespesa, DespesaRepository despesaRepository) {
 		
+		Despesa despesa = despesaRepository.getReferenceById(codigoDespesa);
+		
+		despesa.setValorDespesa(valorDespesa);
+		despesa.setDescricaoDespesa(descricaoDespesa);
+		despesa.setCategoriaDespesa(categoriaDespesa);
+		despesa.setVencimentoDespesa(vencimentoDespesa);
+		despesa.setDataPagamento(dataPagamento);
+		
+		return despesa;
 	}
 	
-	public Despesa(double valorDespesa, String descricaoDespesa, String categoriaDespesa,
-			LocalDate vencimentoDespesa, LocalDate dataPagamento) {
-		this.valorDespesa = valorDespesa;
-		this.descricaoDespesa = descricaoDespesa;
-		this.categoriaDespesa = categoriaDespesa;
-		this.vencimentoDespesa = vencimentoDespesa;
-		this.dataPagamento = dataPagamento;
-	}
-
-
-	public Long getCodigoDespesa() {
-		return codigoDespesa;
-	}
-
-	public void setCodigoDespesa(Long codigoDespesa) {
-		this.codigoDespesa = codigoDespesa;
-	}
-
+	
 	public double getValorDespesa() {
 		return valorDespesa;
 	}
-
+	
 	public void setValorDespesa(double valorDespesa) {
 		this.valorDespesa = valorDespesa;
 	}
-
+	
 	public String getDescricaoDespesa() {
 		return descricaoDespesa;
 	}
-
+	
 	public void setDescricaoDespesa(String descricaoDespesa) {
 		this.descricaoDespesa = descricaoDespesa;
 	}
-
+	
 	public String getCategoriaDespesa() {
 		return categoriaDespesa;
 	}
-
+	
 	public void setCategoriaDespesa(String categoriaDespesa) {
 		this.categoriaDespesa = categoriaDespesa;
 	}
-
+	
 	public LocalDate getVencimentoDespesa() {
 		return vencimentoDespesa;
 	}
-
+	
 	public void setVencimentoDespesa(LocalDate vencimentoDespesa) {
 		this.vencimentoDespesa = vencimentoDespesa;
 	}
-
+	
 	public LocalDate getDataPagamento() {
 		return dataPagamento;
 	}
-
+	
 	public void setDataPagamento(LocalDate dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
