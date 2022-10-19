@@ -57,6 +57,12 @@ public class QuartoController {
 		return QuartoFormularioDto.converter(quartos);
 	}
 	
+	@CrossOrigin
+	@GetMapping("/capacidadeHotel") 
+	public int detalharSaida() {
+		int qntHospedes = quartoRepository.findQntHospedeQuarto(); 
+		return qntHospedes; 
+	}
 	
 	@CrossOrigin
 	@Transactional

@@ -60,6 +60,20 @@ public class DespesaController {
 		return DespesaFormularioDto.converter(despesas);
 	}
 	
+	@CrossOrigin
+	@GetMapping("/totalDia")
+	public double buscaDespesaDia(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
+		double despesaDia=0;
+		Despesa d;
+			List<Despesa> despesas = despesaRepository.findByDataPagamento(data);
+			
+			for(int i = 0; i < despesas.size(); i++) {
+				d=despesas.get(i);
+				
+				despesaDia+=d.getValorDespesa();;
+			}
+		return despesaDia;
+	}
 	
 	@CrossOrigin
 	@Transactional

@@ -10,5 +10,6 @@ import br.com.contel.sistemaContel.model.Despesa;
 public interface DespesaRepository extends JpaRepository<Despesa, Long> {
 	
 	public List<Despesa> findByVencimentoDespesaBetween (LocalDate dataInicial, LocalDate dataFinal);
-
+	
+	public List<Despesa> findByDataPagamento (LocalDate data);
 }
